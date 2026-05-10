@@ -197,5 +197,7 @@ def handle_location_update(data):
         db.session.add(loc); db.session.commit()
         emit('bus_location_update', {'driver_id': driver_id, 'lat': lat, 'lng': lng}, broadcast=True)
 
-if __name__ == '__main__':
-    socketio.run(app, host='0.0.0.0', port=3000, debug=True)
+
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
